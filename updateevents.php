@@ -2,7 +2,8 @@
 
 
 include('inc/database.php');
-    $DATABASE = new Database('localhost', 'ginkeltjes_nl',  'ginkeltjes.nl', 'hobbykip', '', $TABLES);
+include('settings.php'); // Setting bestand met alleen database informatie
+$DATABASE = new Database($SETTINGS[database_host], $SETTINGS[database_schema],  $SETTINGS[database_gebruiker], $SETTINGS[database_wachtwoord], '', $TABLES);
 
 $urleventnames = "https://api.guildwars2.com/v1/event_names.json";
 $dataeventnames = json_decode( file_get_contents($urleventnames), TRUE );
